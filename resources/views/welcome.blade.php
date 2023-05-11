@@ -27,7 +27,10 @@ $getCountry = function ($responses, $countryCode) {
   //  $client = new Client(['base_uri' => 'https://date.nager.at/api/v3/']);
   //return (json_decode(($client->request('GET', 'https://date.nager.at/api/v3/CountryInfo/' . $countryCode))->getBody()))->commonName;
 //};
-  $jsonHoliday = json_decode($responses['NextPublicHolidaysWorldWide']['value']->getBody())
+$jsonHoliday = null;
+if ($responses['NextPublicHolidaysWorldWide']['state'] == 'fulfilled') {
+    $jsonHoliday = json_decode($responses['NextPublicHolidaysWorldWide']['value']->getBody());
+};
  //$jsonHoliday = json_decode($client->request('GET', 'NextPublicHolidaysWorldWide')->getBody());
 ?>
 <html lang="en">
